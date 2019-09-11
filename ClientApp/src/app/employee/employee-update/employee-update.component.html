@@ -1,0 +1,45 @@
+<div class="container" style="border:thin">
+    <form #EditForm='ngForm' name="editform" (ngSubmit)="editEmployee(EditForm)" class="form-horizontal">
+        <div class="row">
+            <label class="control-label col-md-4" for="fname">First Name:</label>
+            <div class="col-md-8">
+                <input type="text" class="form-control" id="fname" placeholder="Enter first name" name="firstname"
+                    firstname required [(ngModel)]='data.firstname' #firstname="ngModel">
+                <span class="help-bpx" *ngIf="firstname.touched && !firstname.valid ">Required</span>
+            </div>
+        </div>
+        <div class="row">
+            <label class="control-label col-md-4" for="email">Last Name:</label>
+            <div class="col-md-8">
+                <input required type="text" class="form-control" id="lastname" placeholder="Enter Last Name"
+                    name="lastname" lastname required [(ngModel)]='data.lastname' #lastname="ngModel">
+                <span class="help-bpx" *ngIf="lastname.touched && !lastname.valid ">Required</span>
+            </div>
+        </div>
+        <div class="row">
+            <label class="control-label col-md-4" for="Gender">Gender:</label>
+            <mat-form-field class="col-md-8">
+                <mat-select matNativeControl name="gender" gender required [(ngModel)]='data.gender' #gender="ngModel">
+                    <mat-option [value]="0">Please Select</mat-option>
+                    <mat-option [value]="1">Male</mat-option>
+                    <mat-option [value]="2">Female</mat-option>
+                    <span class="help-bpx" *ngIf="gender.touched && !gender.valid ">required</span>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <label class="control-label col-md-4" for="email">Email:</label>
+            <div class="col-md-8">
+                <input #email="ngModel" type="email" [(ngModel)]='data.email' class="form-control" id="email"
+                    placeholder="Enter email" name="email">
+                <span class="help-bpx" *ngIf="email.touched && !email.valid ">**</span>
+            </div>
+        </div>
+        <div class="row" style="text-align: right">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+<button style="display:none" type="button" #closeBtn class="btn btn-default" (click)="closeUpdateDialog()">Close</button>
