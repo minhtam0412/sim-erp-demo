@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
+using SIM.ERP.Commons;
 using SIM.ERP.Models;
 
 namespace SIM.ERP.Controllers
@@ -11,7 +14,7 @@ namespace SIM.ERP.Controllers
     public class SampleDataController : Controller
     {
         static Random rng = new Random();
-        private static List<Employee> lstEmployees = new List<Employee>(Enumerable.Range(1, 10).Select(index => new Employee
+        private static List<Employee> lstEmployees = new List<Employee>(Enumerable.Range(1, 1000).Select(index => new Employee
         {
             ID = rng.Next(1, 1000).ToString(),
             firstname = "Tam",
@@ -55,16 +58,11 @@ namespace SIM.ERP.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetEmployee([FromRoute] int id)
+        public IActionResult GetEmployee([FromRoute] string id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            var employee = lstEmployees.FirstOrDefault(x => x.ID.Equals(id));
 
-            var employee = new Employee { ID = "1", firstname = "Tam", lastname = "Ngo Minh", Email = "admin@gmail.com", Gender = 1 };
-
-            if (employee == null)
+            if (employee == null || string.IsNullOrEmpty(employee.ID))
             {
                 return NotFound();
             }
@@ -96,8 +94,26 @@ namespace SIM.ERP.Controllers
                 objEmpTmp.lastname = objEmployee.lastname;
                 objEmpTmp.Email = objEmployee.Email;
                 objEmpTmp.Gender = objEmployee.Gender;
+                objEmpTmp.Issingle = objEmployee.Issingle;
+                objEmpTmp.Birthday = objEmployee.Birthday;
+                objEmpTmp.Graduation = objEmployee.Graduation;
             }
             return await Task.FromResult<IActionResult>(Ok());
+        }
+
+        [HttpGet("[action]")]
+        public JsonResult PagingEmployee([FromHeader]string sortOrder)
+        {
+            string strFilter = Globals.GetHeaderValue(Request, "filter");
+            string strSortOrder = Globals.GetHeaderValue(Request, "sortOrder");
+            string strPageNumber = Globals.GetHeaderValue(Request, "pageNumber");
+            string strPageSize = Globals.GetHeaderValue(Request, "pageSize");
+
+           lstEmployees.ForEach(x=>x.TotalRow = lstEmployees.Count);
+            var rsl = lstEmployees.Skip(Convert.ToInt32(strPageSize) * Convert.ToInt32(strPageNumber))
+                .Take(Convert.ToInt32(strPageSize));
+
+            return new JsonResult(rsl);
         }
 
         public class WeatherForecast

@@ -18,8 +18,9 @@
             <mat-form-field class="col-md-8">
                 <mat-select matNativeControl formControlName="gender">
                     <mat-option [value]="0" selected>Please Select</mat-option>
-                    <mat-option [value]="1">Male</mat-option>
-                    <mat-option [value]="2">Female</mat-option>
+                    <mat-option *ngFor="let gender of Gender" [value]="gender.id">{{gender.name}}</mat-option>
+                    <!-- <mat-option [value]="1">Male</mat-option>
+                    <mat-option [value]="2">Female</mat-option> -->
                 </mat-select>
             </mat-form-field>
         </div>
@@ -39,20 +40,23 @@
         </div>
         <div class="row">
             <label class="col-md-4"></label>
-            <mat-checkbox class="col-md-8" formControlName="issingle">Single</mat-checkbox>
+            <mat-checkbox class="col-md-8" formControlName="issingle" style="padding-bottom: 20px">Single</mat-checkbox>
         </div>
 
-        <div class="row">
+        <div class="row" style="padding-bottom: 20px">
             <label for="graduation" class="control-label col-md-4">Graduation</label>
-            <mat-radio-group aria-label="Select an option" class="col-md-8" formControlName="graduation">
+            <mat-radio-group aria-label="Select an option" class="col-md-8" style="margin-bottom: auto;margin-top: auto" formControlName="graduation">
                 <mat-radio-button value="1" style="margin-right: 10px">Excellent</mat-radio-button>
                 <mat-radio-button value="2">Good</mat-radio-button>
             </mat-radio-group>
         </div>
+        <div style="display: none">
+            <input type="button" formControlName="id">
+        </div>
         <div class="row" style="text-align: right">
             <div class="col-sm-12">
-                <button id="btnCancel" type="button" class="btn btn-primary" style="margin-right: 20px" (click)="takeHome()">Cancel</button>
-                <button id="btnsubmit" type="submit" class="btn btn-primary">Submit</button>
+                <button id="btnsubmit" type="submit" mat-flat-button color="primary" style="margin-right: 10px">Submit</button>
+                <button id="btnCancel" type="button" class="btn btn-danger" (click)="takeHome()">Cancel</button>
             </div>
         </div>
     </form>

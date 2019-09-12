@@ -11,4 +11,5 @@ export class Employee {
     issingle: boolean;
     graduation: string;
     position: number;
+    totalRow : number;
 }

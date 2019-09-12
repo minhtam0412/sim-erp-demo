@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LbComponentModule } from 'src/app/lb-component/lb-component.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatIconModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatCheckboxModule, MatRadioModule, MatButtonModule } from '@angular/material';
+import { MatIconModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatCheckboxModule, MatRadioModule, MatButtonModule, MatProgressSpinnerModule, MatPaginatorModule, MatCardModule, MatPaginatorIntl } from '@angular/material';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HeaderComponent } from './header/header.component';
 import { ProvinceModule } from './province/province.module';
@@ -16,14 +16,15 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
-import { EmployeeAddComponent } from './employee/employee-add/employee-add.component';
-import { EmployeeUpdateComponent } from './employee/employee-update/employee-update.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogExampleComponent } from './example/MyDialog/dialog-example/dialog-example.component';
-import {MatSortModule} from '@angular/material/sort';
-import {MatTableModule} from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 import { EmployeeInfoComponent } from './employee/employee-info/employee-info.component';
 import { FormcheckcomponentComponent } from './lb-component/formcheckcomponent/formcheckcomponent.component';
+import { EmployeeListPagingComponent } from './employee/employee-list/employee-list.component_v3';
+import { AngularMaterialModule } from './materialmodule/angularmaterial/angularmaterial.module';
+import { CustomPaginator } from './employee/employee-list/CustomPaginatorConfiguration';
 
 
 const routes: Routes = [
@@ -41,7 +42,7 @@ const routes: Routes = [
   // },
   {
     path: 'employee',
-    component: EmployeeListComponent
+    component: EmployeeListPagingComponent
   },
   {
     path: 'formcheck',
@@ -58,39 +59,21 @@ const routes: Routes = [
     FetchDataComponent,
     NavMenuComponent,
     EmployeeListComponent,
-    EmployeeAddComponent,
-    EmployeeUpdateComponent,
     DialogExampleComponent,
     EmployeeInfoComponent,
+    EmployeeListPagingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     LbComponentModule,
     BrowserAnimationsModule,
-    MatMenuModule,
-    MatIconModule,
-    ProvinceModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDialogModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatCheckboxModule,
-    MatRadioModule,
-    MatTableModule,
-    MatSortModule,
-    MatButtonModule,
-    ReactiveFormsModule,
+    AngularMaterialModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [],
+  providers: [{ provide: MatPaginatorIntl, useValue: CustomPaginator() }],
   bootstrap: [AppComponent],
   entryComponents: [
-    EmployeeAddComponent,
-    EmployeeUpdateComponent,
     EmployeeInfoComponent
   ]
 })

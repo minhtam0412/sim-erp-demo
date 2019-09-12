@@ -15,5 +15,6 @@ namespace SIM.ERP.Models
         public DateTime Birthday { get; set; }
         public bool Issingle { get; set; }
         public string Graduation { get; set; }
+        public int TotalRow { get; set; }
     }
 }

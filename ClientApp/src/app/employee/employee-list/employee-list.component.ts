@@ -2,8 +2,6 @@ import { Component, OnInit, ViewChild, AfterViewInit, ViewChildren } from '@angu
 import { Employee } from 'src/app/models/empployee';
 import { EmployeeService } from 'src/app/services/employee/employee.service';
 import { Router } from '@angular/router';
-import { EmployeeAddComponent } from '../employee-add/employee-add.component';
-import { EmployeeUpdateComponent } from '../employee-update/employee-update.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -21,10 +19,7 @@ export class EmployeeListComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<Employee>();
   displayedColumns: string[] = ['position', 'fname', 'lname', 'email', 'gender', 'birthday', 'issingle', 'graduation', 'detail', 'delete'];
 
-  @ViewChild('empadd', { static: false }) addComponent: EmployeeAddComponent;
-  @ViewChild(EmployeeUpdateComponent, { static: false })
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  editComponent: EmployeeUpdateComponent;
   rowSelected: Employee;
 
   ngAfterViewInit(): void {
@@ -70,14 +65,6 @@ export class EmployeeListComponent implements OnInit, AfterViewInit {
     }
   }
 
-  loadAddNew() {
-    this.addComponent.objemp = new Employee();
-    this.addComponent.objemp.email = '';
-    this.addComponent.objemp.firstname = '';
-    this.addComponent.objemp.lastname = '';
-    this.addComponent.objemp.id = '';
-    this.addComponent.objemp.gender = 0;
-  }
   loadNewForm(id: string, email: string, firstName: string, lastName: string, gender: number) {
     this.rowSelected = new Employee();
     this.rowSelected.id = id;
@@ -85,38 +72,28 @@ export class EmployeeListComponent implements OnInit, AfterViewInit {
     this.rowSelected.lastname = lastName;
     this.rowSelected.gender = gender;
     this.rowSelected.email = email;
-    this.openUpdateDialog();
   }
   refreshData() {
     this.loadData();
   }
 
-  openAddDialog(): void {
+  openAddDialog(id?: string): void {
 
     const dialogRef = this.dialog.open(EmployeeInfoComponent, {
-      width: '600px', data: false
+      width: '600px', maxHeight: '600px', data: { employeeId: id }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
-      if (result == true) {
+      if (result != undefined && result.isSuccess != undefined && result.isSuccess == true) {
         this.refreshData();
       }
     });
   }
 
-  openUpdateDialog(): void {
-    const dialogRef = this.dialog.open(EmployeeUpdateComponent, {
-      width: '600px',
-      data: this.rowSelected
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      // console.log(result.rsl);
-      this.refreshData();
-    });
+  onRowClicked(row) {
+    console.log(row);
   }
 
 

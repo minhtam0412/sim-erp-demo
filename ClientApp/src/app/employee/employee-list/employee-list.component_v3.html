@@ -1,18 +1,21 @@
 <div>
-    <button mat-flat-button color="primary" style="margin-right: 10px" (click)="openAddDialog()">Add New</button>
-    <button mat-flat-button color="primary" (click)="refreshData()">Search</button>
+    <button mat-flat-button color="primary" style="margin-right: 10px" (click)="openDialog()">Add New</button>
+    <button mat-flat-button color="primary" (click)="loadEmployeePage()">Search</button>
 </div>
 
 <hr>
-<div *ngIf="!dataAvailable">
-    <h4> No Employee Data is present Click Add new to add Data.</h4>
-</div>
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+<mat-card *ngIf="dataSource.loading$ | async" style="display: flex; justify-content: center; align-items: center">
+    <mat-spinner color="primary" mode="indeterminate">
+    </mat-spinner>
+</mat-card>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort matSortDisableClear>
 
     <!-- Cột STT -->
     <ng-container matColumnDef="position">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> STT </th>
-        <td mat-cell *matCellDef="let element"><span> {{element.position}}</span> </td>
+        <td mat-cell *matCellDef="let element;let i = index;"><span> {{i+1}}</span> </td>
     </ng-container>
 
     <!-- Cột FirstName -->
@@ -66,7 +69,7 @@
     <ng-container matColumnDef="detail">
         <th mat-header-cell *matHeaderCellDef> Detail </th>
         <td mat-cell *matCellDef="let e">
-            <button mat-icon-button aria-label="Edit" (click)="openAddDialog(e.id)"> <mat-icon>edit</mat-icon> </button>
+            <button mat-icon-button aria-label="Edit" (click)="openDialog(e.id)"> <mat-icon>edit</mat-icon> </button>
         </td>
     </ng-container>
 
@@ -81,3 +84,4 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)"></tr>
 
 </table>
+<mat-paginator [length]="totalRow" [pageSize]="10" [pageSizeOptions]="[10, 20, 50]"></mat-paginator>

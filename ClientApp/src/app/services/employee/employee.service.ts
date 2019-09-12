@@ -49,6 +49,17 @@ export class EmployeeService {
     return this.http.put<Employee>(ROOT_URL + 'SampleData/' + emp.id, body, { headers });
   }
 
+  updateEmployee(id: string, emp: any) {
+    console.log(emp);
+    const headers = new HttpHeaders().set('content-type', 'application/json');
+    const body = emp;
+    return this.http.put<Employee>(ROOT_URL + 'SampleData/' + id, body, { headers });
+  }
+
+  getInfoEmployee(id: string) {
+    return this.http.get<Employee>(ROOT_URL + 'SampleData/' + id);
+  }
+
   delEmployee(emp: Employee) {
     const url = ROOT_URL + 'SampleData/DeleteEmployee/' + emp.id;
     return this.http.delete<Employee>(url);
