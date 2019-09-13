@@ -45,6 +45,7 @@ import {
   MatFormFieldModule
 } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SatPopoverModule } from '@ncstate/sat-popover';
 
 @NgModule({
   exports: [
@@ -93,7 +94,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    SatPopoverModule,
+    ScrollingModule
   ]
 })
 export class AngularMaterialModule { }

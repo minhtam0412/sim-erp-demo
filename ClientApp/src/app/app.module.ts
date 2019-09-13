@@ -23,6 +23,7 @@ import { FormcheckcomponentComponent } from './lb-component/formcheckcomponent/f
 import { EmployeeListPagingComponent } from './employee/employee-list/employee-list.component_v3';
 import { AngularMaterialModule } from './materialmodule/angularmaterial/angularmaterial.module';
 import { CustomPaginator } from './employee/employee-list/CustomPaginatorConfiguration';
+import { InlineEditComponent } from './employee/inline-edit/inline-edit.component';
 
 
 const routes: Routes = [
@@ -58,7 +59,8 @@ const routes: Routes = [
     NavMenuComponent,
     EmployeeListComponent,
     EmployeeInfoComponent,
-    EmployeeListPagingComponent
+    EmployeeListPagingComponent,
+    InlineEditComponent
   ],
   imports: [
     BrowserModule,

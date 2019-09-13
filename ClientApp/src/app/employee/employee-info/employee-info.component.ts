@@ -46,6 +46,7 @@ export class EmployeeInfoComponent implements OnInit, AfterViewInit {
       birthday: new FormControl(),
       issingle: new FormControl(),
       graduation: new FormControl(),
+      job: new FormControl(),
       functionArray: this.fb.array([]),
     });
 
@@ -116,5 +117,10 @@ export class EmployeeInfoComponent implements OnInit, AfterViewInit {
     if (event.key === "Enter") {
       console.log(event);
     }
+  }
+
+  updateJobData($event) {
+    if ($event == null || $event == undefined) { return; }
+    this.myGroup.controls.job.setValue($event);
   }
 }

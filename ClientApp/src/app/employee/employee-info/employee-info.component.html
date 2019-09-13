@@ -23,7 +23,7 @@
             </mat-form-field>
         </div>
         <div class="row">
-            <label class="control-label col-md-4" for="email">Email:</label>
+            <label class="control-label col-md-4">Email:</label>
             <mat-form-field class="col-md-8">
                 <input matInput formControlName="email">
             </mat-form-field>
@@ -35,6 +35,7 @@
                 <mat-datepicker-toggle matSuffix [for]="picker "></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
+
         </div>
         <div class="row">
             <label class="col-md-4"></label>
@@ -48,6 +49,18 @@
                 <mat-radio-button value="2">Good</mat-radio-button>
             </mat-radio-group>
         </div>
+
+        <div class="row">
+            <label class="control-label col-md-4" for="">Job</label>
+            <mat-form-field class="col-md-8">
+                <input matInput formControlName='job' [satPopoverAnchor]='p' (click)="p.toggle()">
+            </mat-form-field>
+            <sat-popover #p hasBackdrop horizontalAlign="before" verticalAlign='below' forceAlignment (closed)="updateJobData($event)" scrollStrategy="reposition">
+                <inline-edit [value]='myGroup.controls.job.value'></inline-edit>
+            </sat-popover>
+        </div>
+
+
         <div style="display: none">
             <input type="button" formControlName="id">
         </div>
