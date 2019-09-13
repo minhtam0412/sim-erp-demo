@@ -80,7 +80,7 @@ export class EmployeeListComponent implements OnInit, AfterViewInit {
   openAddDialog(id?: string): void {
 
     const dialogRef = this.dialog.open(EmployeeInfoComponent, {
-      width: '600px', maxHeight: '600px', data: { employeeId: id }
+      width: '800px', maxHeight: '600px', data: { employeeId: id }
     });
 
     dialogRef.afterClosed().subscribe(result => {

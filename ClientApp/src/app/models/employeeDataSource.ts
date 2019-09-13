@@ -16,6 +16,14 @@ export class EmployeeDataSource implements DataSource<Employee> {
         return this.employeeSubject.asObservable();
     }
 
+    data() {
+        return this.employeeSubject.value;
+    }
+
+    update(data) {
+        this.employeeSubject.next(data);
+    }
+
     disconnect(collectionViewer: CollectionViewer): void {
         this.employeeSubject.complete();
         this.loadingSubject.complete();

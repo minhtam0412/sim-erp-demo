@@ -12,7 +12,7 @@
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort matSortDisableClear>
 
-    <!-- Cột STT -->
+    <!-- Cột STT Auto Indx -->
     <ng-container matColumnDef="position">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> STT </th>
         <td mat-cell *matCellDef="let element;let i = index;"><span> {{i+1}}</span> </td>

@@ -64,6 +64,8 @@ export class EmployeeInfoComponent implements OnInit, AfterViewInit {
         alert('Thêm nhân viên thất bại!');
         this.data.isSuccess = false;
       });
+
+
     } else {
       this.dataService.updateEmployee(this.employeeInfo.id, newEmp).subscribe(res => {
         alert('Cập nhật viên thành công!');
@@ -96,11 +98,23 @@ export class EmployeeInfoComponent implements OnInit, AfterViewInit {
   AddRow() {
     const functionArray = this.myGroup.controls['functionArray'] as FormArray;
     functionArray.push(this.fb.group({
-      functionId: '',
+      functionId: { value: '', disabled: true },
       functionName: '',
       functionNote: ''
     }));
-    this.functionData.push({functionId:'1',functionName:'',functionNote:''});
+    this.functionData.push({ functionId: '1', functionName: '', functionNote: '' });
     this.datasource = new MatTableDataSource(this.functionData);
+  }
+
+  changeName(value: any, index: any) {
+    const functionArray = this.myGroup.controls.functionArray;
+    functionArray.controls[index].controls.functionNote.setValue('Fucntion Name: ' + value);
+    console.log('value: ' + value + ' index: ' + index);
+  }
+
+  onKeydown(event, index) {
+    if (event.key === "Enter") {
+      console.log(event);
+    }
   }
 }

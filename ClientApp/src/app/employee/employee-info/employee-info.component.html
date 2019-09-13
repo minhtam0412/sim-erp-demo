@@ -1,5 +1,5 @@
 <div class="container">
-    <form (ngSubmit)="submitData(myGroup.value)" [formGroup]="myGroup" class="justify-content-md-center">
+    <form (ngSubmit)="submitData(myGroup.value)" [formGroup]="myGroup" (keydown.enter)="$event.preventDefault()" class="justify-content-md-center">
         <div class="row">
             <label for="" class="col-md-4 control-label">First Name</label>
             <mat-form-field class="col-md-8">
@@ -19,8 +19,6 @@
                 <mat-select matNativeControl formControlName="gender">
                     <mat-option [value]="0" selected>Please Select</mat-option>
                     <mat-option *ngFor="let gender of Gender" [value]="gender.id">{{gender.name}}</mat-option>
-                    <!-- <mat-option [value]="1">Male</mat-option>
-                    <mat-option [value]="2">Female</mat-option> -->
                 </mat-select>
             </mat-form-field>
         </div>
@@ -76,14 +74,14 @@
                     <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
                     <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
                         <mat-form-field style="width: 100px;">
-                            <input matInput type="text" formControlName="functionName">
+                            <input matInput type="text" formControlName="functionName" (keydown)="onKeydown($event, index)" (focusout)="changeName($event.target.value, index)">
                         </mat-form-field>
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="functionNote">
                     <mat-header-cell *matHeaderCellDef> Note </mat-header-cell>
-                    <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
+                    <mat-cell style="width: 100%" *matCellDef="let element; let index = index" [formGroupName]="index">
                         <mat-form-field style="width: 100px;">
                             <input matInput type="text" formControlName="functionNote">
                         </mat-form-field>

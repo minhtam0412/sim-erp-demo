@@ -1,39 +1,37 @@
-<ng-container formArrayName="passengerArray">
-    <mat-table #table class="table table-bordered table-sm" [dataSource]="datasource">
-        <mat-header-row *matHeaderRowDef="cols"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: cols;"></mat-row>
-        <ng-container matColumnDef="Gender">
-            <mat-header-cell *matHeaderCellDef> Gender </mat-header-cell>
-            <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
-                <mat-form-field style="width: 100px;">
-                    <mat-select placeholder="Gender" formControlName="Gender" required>
-                        <mat-option value="male">Male</mat-option>
-                        <mat-option value="female">Female</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="Name">
-            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-            <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
-                <mat-form-field style="width: 100px;">
-                    <input matInput placeholder="Name" type="text" formControlName="Name" required>
-                </mat-form-field>
-            </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="Age">
-            <mat-header-cell *matHeaderCellDef> Age </mat-header-cell>
-            <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
-                <mat-form-field style="width: 100px;">
-                    <input matInput placeholder="Age" type="text" formControlName="Age" required>
-                </mat-form-field>
-            </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="Seat No">
-            <mat-header-cell *matHeaderCellDef> Seat No </mat-header-cell>
-            <mat-cell *matCellDef="let element; let index = index">
-                <mat-label>{{element.SeatNo}}</mat-label>
-            </mat-cell>
-        </ng-container>
-    </mat-table>
-</ng-container>
+<table mat-table #table [dataSource]="dataSource">
+    <ng-container matColumnDef="column">
+        <th mat-header-cell *matHeaderCellDef> header </th>
+        <td mat-cell *matCellDef="let row"> {{row.column}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="column">
+        <th mat-header-cell *matHeaderCellDef> header </th>
+        <td mat-cell *matCellDef="let row"> {{row.column}} </td>
+    </ng-container>
+
+    <mat-form-field>
+        <input matInput placeholder="label" value="value">
+    </mat-form-field>
+
+    <mat-select placeholder="Placeholder" [(ngModel)]="selectedValue" name="item">
+        <mat-option *ngFor="let item of items" [value]="item.value">
+            {{item.viewValue}}
+        </mat-option>
+    </mat-select>
+
+    <button mat-button>text</button>
+
+    <button type="submit">Submit</button>
+
+    <mat-form-field ng>
+        <input matInput [matDatepicker]="picker" placeholder="title">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <button matSuffix [matDatepickerToggle]="picker"></button>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+
+
+    <tr mat-header-row *matHeaderRowDef="['column']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['column'];"></tr>
+</table>
