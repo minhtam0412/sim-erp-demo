@@ -8,6 +8,7 @@ import { tap } from 'rxjs/operators';
 import { MatSort } from '@angular/material/sort';
 import { merge } from 'rxjs';
 import { EmployeeInfoComponent } from '../employee-info/employee-info.component';
+import { EmployeeService } from 'src/app/services/employee/employee.service';
 
 @Component({
     selector: 'app-employee-list',
@@ -23,9 +24,10 @@ export class EmployeeListPagingComponent implements OnInit, AfterViewInit {
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
     totalRow: number;
+    empTmp: Employee;
 
 
-    constructor(private employeePagingService: EmployeePagingService, private route: ActivatedRoute, public dialog: MatDialog) { }
+    constructor(private dataService: EmployeeService, private employeePagingService: EmployeePagingService, private route: ActivatedRoute, public dialog: MatDialog) { }
 
     ngOnInit(): void {
         this.course = this.route.snapshot.data["course"];
@@ -71,6 +73,24 @@ export class EmployeeListPagingComponent implements OnInit, AfterViewInit {
                 this.loadEmployeePage();
             }
         });
+    }
+
+
+    deleteConfirmation(id: string) {
+        if (confirm('Bạn có chắc muốn xoá dữ liệu đang chọn?')) {
+            this.empTmp = new Employee();
+            this.empTmp.id = id;
+            this.dataService.delEmployee(this.empTmp).subscribe((res) => {
+                alert('Xoá thành công!');
+                this.loadEmployeePage();
+            }, err => {
+                console.log(err);
+            });
+        }
+    }
+
+    onRowClicked(row) {
+        console.log(row);
     }
 
 }

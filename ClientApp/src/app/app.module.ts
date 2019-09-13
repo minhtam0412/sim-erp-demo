@@ -9,7 +9,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatCheckboxModule, MatRadioModule, MatButtonModule, MatProgressSpinnerModule, MatPaginatorModule, MatCardModule, MatPaginatorIntl } from '@angular/material';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HeaderComponent } from './header/header.component';
-import { ProvinceModule } from './province/province.module';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
@@ -17,7 +16,6 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DialogExampleComponent } from './example/MyDialog/dialog-example/dialog-example.component';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { EmployeeInfoComponent } from './employee/employee-info/employee-info.component';
@@ -59,7 +57,6 @@ const routes: Routes = [
     FetchDataComponent,
     NavMenuComponent,
     EmployeeListComponent,
-    DialogExampleComponent,
     EmployeeInfoComponent,
     EmployeeListPagingComponent
   ],

@@ -59,6 +59,7 @@
 
 .sm-blue>li:first-child>a,
 .sm-blue>li:first-child> :not(ul) a {
+    color:white;
     border-radius: 8px 8px 0 0;
 }
 
@@ -243,10 +244,11 @@
     .sm-blue a .sub-arrow::before {
         display: none;
     }
-    .sm-blue>li:first-child>a,
-    .sm-blue>li:first-child> :not(ul) a {
+      .sm-blue > li:first-child > a,
+      .sm-blue > li:first-child > :not(ul) a {
+        color: white;
         border-radius: 8px 0 0 8px;
-    }
+      }
     .sm-blue>li:last-child>a,
     .sm-blue>li:last-child> :not(ul) a {
         border-radius: 0 8px 8px 0 !important;
@@ -348,6 +350,7 @@
     }
     .sm-blue.sm-rtl>li:last-child>a,
     .sm-blue.sm-rtl>li:last-child> :not(ul) a {
+        color:white;
         border-radius: 8px 0 0 8px !important;
     }
     .sm-blue.sm-rtl>li:first-child {
@@ -380,6 +383,7 @@
     }
     .sm-blue.sm-vertical>li:first-child>a,
     .sm-blue.sm-vertical>li:first-child> :not(ul) a {
+        color:white;
         border-radius: 8px 8px 0 0;
     }
     .sm-blue.sm-vertical>li:last-child>a,

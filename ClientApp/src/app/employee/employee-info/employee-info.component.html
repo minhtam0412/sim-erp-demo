@@ -53,6 +53,45 @@
         <div style="display: none">
             <input type="button" formControlName="id">
         </div>
+
+        <div>
+            <button mat-flat-button type="button" color="primary" style="margin-right: 10px" (click)="AddRow()">Add Row</button>
+        </div>
+
+        <ng-container formArrayName="functionArray">
+            <mat-table class="table table-bordered table-sm" [dataSource]="datasource">
+                <mat-header-row *matHeaderRowDef="cols"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: cols;"></mat-row>
+
+                <ng-container matColumnDef="functionId">
+                    <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+                    <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
+                        <mat-form-field style="width: 100px;">
+                            <input matInput type="text" formControlName="functionId">
+                        </mat-form-field>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="functionName">
+                    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                    <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
+                        <mat-form-field style="width: 100px;">
+                            <input matInput type="text" formControlName="functionName">
+                        </mat-form-field>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="functionNote">
+                    <mat-header-cell *matHeaderCellDef> Note </mat-header-cell>
+                    <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
+                        <mat-form-field style="width: 100px;">
+                            <input matInput type="text" formControlName="functionNote">
+                        </mat-form-field>
+                    </mat-cell>
+                </ng-container>
+            </mat-table>
+        </ng-container>
+
         <div class="row" style="text-align: right">
             <div class="col-sm-12">
                 <button id="btnsubmit" type="submit" mat-flat-button color="primary" style="margin-right: 10px">Submit</button>

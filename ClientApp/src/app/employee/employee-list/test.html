@@ -1,0 +1,39 @@
+<ng-container formArrayName="passengerArray">
+    <mat-table #table class="table table-bordered table-sm" [dataSource]="datasource">
+        <mat-header-row *matHeaderRowDef="cols"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: cols;"></mat-row>
+        <ng-container matColumnDef="Gender">
+            <mat-header-cell *matHeaderCellDef> Gender </mat-header-cell>
+            <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
+                <mat-form-field style="width: 100px;">
+                    <mat-select placeholder="Gender" formControlName="Gender" required>
+                        <mat-option value="male">Male</mat-option>
+                        <mat-option value="female">Female</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
+                <mat-form-field style="width: 100px;">
+                    <input matInput placeholder="Name" type="text" formControlName="Name" required>
+                </mat-form-field>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Age">
+            <mat-header-cell *matHeaderCellDef> Age </mat-header-cell>
+            <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
+                <mat-form-field style="width: 100px;">
+                    <input matInput placeholder="Age" type="text" formControlName="Age" required>
+                </mat-form-field>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Seat No">
+            <mat-header-cell *matHeaderCellDef> Seat No </mat-header-cell>
+            <mat-cell *matCellDef="let element; let index = index">
+                <mat-label>{{element.SeatNo}}</mat-label>
+            </mat-cell>
+        </ng-container>
+    </mat-table>
+</ng-container>

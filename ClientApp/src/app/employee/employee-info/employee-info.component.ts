@@ -1,9 +1,10 @@
 import { Component, OnInit, Inject, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms';
 import { EmployeeService } from 'src/app/services/employee/employee.service';
 import { Employee } from 'src/app/models/empployee';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
+import { Function } from 'src/app/models/function';
 
 @Component({
   selector: 'app-employee-info',
@@ -15,6 +16,9 @@ export class EmployeeInfoComponent implements OnInit, AfterViewInit {
   employeeInfo: any;
   addMode: boolean = true;
   Gender: any = [{ id: 1, name: 'Nam' }, { id: 2, name: 'Nữ' }]
+  cols = ['functionId', 'functionName', 'functionNote'];
+  datasource = new MatTableDataSource<Function>();
+  functionData: Function[] = [];
 
   ngAfterViewInit(): void {
     if (this.data != undefined) {
@@ -28,7 +32,7 @@ export class EmployeeInfoComponent implements OnInit, AfterViewInit {
 
   constructor(private dataService: EmployeeService, public dialogRef: MatDialogRef<EmployeeInfoComponent>,
     private route: Router,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
+    @Inject(MAT_DIALOG_DATA) public data: any, private fb: FormBuilder) {
 
   }
 
@@ -42,6 +46,7 @@ export class EmployeeInfoComponent implements OnInit, AfterViewInit {
       birthday: new FormControl(),
       issingle: new FormControl(),
       graduation: new FormControl(),
+      functionArray: this.fb.array([]),
     });
 
 
@@ -84,8 +89,18 @@ export class EmployeeInfoComponent implements OnInit, AfterViewInit {
     });
   }
 
-
   takeHome() {
     this.dialogRef.close(this.data);
+  }
+
+  AddRow() {
+    const functionArray = this.myGroup.controls['functionArray'] as FormArray;
+    functionArray.push(this.fb.group({
+      functionId: '',
+      functionName: '',
+      functionNote: ''
+    }));
+    this.functionData.push({functionId:'1',functionName:'',functionNote:''});
+    this.datasource = new MatTableDataSource(this.functionData);
   }
 }
