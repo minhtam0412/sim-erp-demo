@@ -64,7 +64,7 @@
             <label class="control-label col-md-4" for="">City</label>
             <mat-form-field class="col-md-8">
                 <input matInput ngui-auto-complete formControlName='citydata' [source]="arrayOfCities" select-value-of="city" [accept-user-input]="false" auto-select-first-item="true" [list-formatter]="renderCity" placeholder="Search for a city" select-on-blur="true"
-                    display-property-name="city" [header-item-template]="cityHeaderTemplate" (valueChanged)="myCallback($event)" />
+                    display-property-name="city" [header-item-template]="cityHeaderTemplate" (valueChanged)="myCallback($event)" no-match-found-text='Không có thông tin' />
             </mat-form-field>
         </div>
 

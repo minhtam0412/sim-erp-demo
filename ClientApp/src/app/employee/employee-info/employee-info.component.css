@@ -3,6 +3,10 @@
     margin-bottom: auto;
 }
 
+html {
+    overflow-y: scroll;
+}
+
 fieldset {
     display: inline-block;
     vertical-align: top;
