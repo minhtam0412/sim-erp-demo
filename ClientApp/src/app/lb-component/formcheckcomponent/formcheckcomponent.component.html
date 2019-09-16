@@ -1,71 +1,117 @@
-<h4 class="mb-3">Form check</h4>
-<form class="needs-validation was-validated" novalidate="">
-    <div class="mb-3">
-        <label for="username">Username</label>
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text">@</span>
+<section class="form_content">
+    <form class="needs-validation was-validated" novalidate="">
+        <div class="row">
+            <div class="col-sm-4 text-left">
+                <p class="text-uppercase" style="font-size:18px;color: #587792;"><span>Bệnh nhân</span></p>
             </div>
-            <input type="text" class="form-control" id="username" placeholder="Username" required="">
-            <div class="invalid-feedback" style="width: 100%;">
-                Your username is required.
-            </div>
-        </div>
-    </div>
-
-    <div class="mb-3">
-        <label for="email">Email
-            <span class="text-muted">(Optional)</span>
-        </label>
-        <input type="email" class="form-control" id="email" placeholder="you@example.com">
-        <div class="invalid-feedback">
-            Please enter a valid email address for shipping updates.
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-5 mb-3">
-            <label for="country">Country</label>
-            <select class="custom-select d-block w-100" id="country" required="">
-                <option value="">Choose...</option>
-                <option>United States</option>
-            </select>
-            <div class="invalid-feedback">
-                Please select a valid country.
+            <div class="col-sm-8 text-right">
+                <div class="form-group">
+                    <button type="button" class="btn btn-outline-success">Lưu (F3)</button>&nbsp;
+                    <button type="button" class="btn btn-outline-success">Lưu & Thêm mới</button>&nbsp;
+                    <button type="button" class="btn btn-outline-primary">Thêm mới</button>&nbsp;
+                    <button type="button" class="btn btn-outline-primary">Trở về</button>&nbsp;
+                </div>
             </div>
         </div>
-        <div class="col-md-4 mb-3">
-            <label for="state">State</label>
-            <select class="custom-select d-block w-100" id="state" required="">
-                <option value="">Choose...</option>
-                <option>California</option>
-            </select>
-            <div class="invalid-feedback">
-                Please provide a valid state.
+        <div class="row">
+            <div class="col-sm-12">
+                <div style="border-top:1px solid #dcdcdc; margin-bottom:10px">
+                </div>
             </div>
         </div>
-        <div class="col-md-3 mb-3">
-            <label for="zip">Zip</label>
-            <input type="text" class="form-control" id="zip" placeholder="" required="">
-            <div class="invalid-feedback">
-                Zip code required.
+        <div class="row">
+            <div class="col-sm-7">
+
+                <div class="row">
+                    <label class="col-md-2 control-label">Mã bệnh nhân</label>
+                    <div class="col-md-4">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="" value="">
+                        </mat-form-field>
+                    </div>
+                    <label class="col-md-2 control-label">Barcode<span class="control-label-require"></span></label>
+                    <div class="col-md-4">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="" value="">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="col-md-2 control-label">Họ và tên</label>
+                    <div class="col-md-10">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="HỌ VÀ TÊN" value="">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="col-md-2 control-label">Ngày sinh</label>
+                    <div class="col-md-4">
+                        <mat-form-field class="example-full-width">
+                            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Choose a date">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <label class="col-md-2 control-label">Giới tính</label>
+                    <div class="col-md-4">
+                        <mat-radio-group name="gioitinh" aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="favoriteSeason">
+                            <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+                                {{season}}
+                            </mat-radio-button>
+
+                        </mat-radio-group>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="col-md-2 control-label">Điện thoại</label>
+                    <div class="col-md-4">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="" value="">
+                        </mat-form-field>
+                    </div>
+                    <label class="col-md-2 control-label">Email<span class="control-label-require"></span></label>
+                    <div class="col-md-4">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="" value="">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="col-md-2 control-label">Địa chỉ</label>
+                    <div class="col-md-10">
+                        <mat-form-field class="example-full-width">
+                            <textarea matInput placeholder="Địa chỉ"></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="col-md-2 control-label">Upload file</label>
+                    <div class="col-md-10">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-sm-5">
+
             </div>
         </div>
-
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <app-multi-combobox #combo1></app-multi-combobox>
+        <div class="row">
         </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <app-multi-combobox #combo2></app-multi-combobox>
-        </div>
-    </div>
-
-    <hr class="mb-4">
-
-    <button class="btn btn-primary btn-lg btn-block" type="button" (click)="showdata()">Continue to checkout</button>
-</form>
+    </form>
+</section>
+<!--<div class="row">
+  <div class="col-md-12">
+    <app-multi-combobox #combo1></app-multi-combobox>
+  </div>
+</div>-->

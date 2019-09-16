@@ -46,6 +46,7 @@ import {
 } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SatPopoverModule } from '@ncstate/sat-popover';
+import { NguiAutoCompleteModule } from '@ngui/auto-complete';
 
 @NgModule({
   exports: [
@@ -96,7 +97,8 @@ import { SatPopoverModule } from '@ncstate/sat-popover';
     MatFormFieldModule,
     FormsModule,
     SatPopoverModule,
-    ScrollingModule
+    ScrollingModule,
+    NguiAutoCompleteModule
   ]
 })
 export class AngularMaterialModule { }

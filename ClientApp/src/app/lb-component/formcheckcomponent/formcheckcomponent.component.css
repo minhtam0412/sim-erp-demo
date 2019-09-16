@@ -1,0 +1,22 @@
+.form_content{
+  width:100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.row label, input {
+  margin-top:auto;
+  margin-bottom:auto;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: row;
+  margin: 15px 0;
+}

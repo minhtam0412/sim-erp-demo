@@ -46,9 +46,17 @@
   .toolbar #twitter-logo:hover {
     opacity: 0.8;
   }
+.main_header {
+  position: fixed;
+  width: 100%;
+  z-index: 20;
+  margin-top: -5%;
+}
 
-.container{
-  margin-top: 10px;
+.container {
+  position: relative;
+  margin-top: 5%;
+  z-index: 1;
 }
 
 .content {

@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormcheckcomponentComponent } from 'src/app/lb-component/formcheckcomponent/formcheckcomponent.component';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
-
 import { MultiComboboxModule } from '../multi-combobox/multi-combobox.module';
 import { MultiComboboxComponent } from '../multi-combobox/multi-combobox.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatFormFieldModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,9 +18,13 @@ import { MultiComboboxComponent } from '../multi-combobox/multi-combobox.compone
     CommonModule,
     MatInputModule,
     MultiSelectAllModule,
-    MultiComboboxModule
+    MultiComboboxModule,
+    MatDatepickerModule,
+    MatRadioModule,
+    MatFormFieldModule,
+    FormsModule,
   ],
-  exports:[
+  exports: [
     FormcheckcomponentComponent
   ],
   entryComponents: [

@@ -14,7 +14,7 @@ namespace SIM.ERP.Controllers
     public class SampleDataController : Controller
     {
         static Random rng = new Random();
-        private static List<Employee> lstEmployees = new List<Employee>(Enumerable.Range(1, 1000).Select(index => new Employee
+        private static List<Employee> lstEmployees = new List<Employee>(Enumerable.Range(1, 5).Select(index => new Employee
         {
             ID = rng.Next(1, 1000).ToString(),
             firstname = "Tam",
@@ -97,6 +97,8 @@ namespace SIM.ERP.Controllers
                 objEmpTmp.Issingle = objEmployee.Issingle;
                 objEmpTmp.Birthday = objEmployee.Birthday;
                 objEmpTmp.Graduation = objEmployee.Graduation;
+                objEmpTmp.Job= objEmployee.Job;
+                objEmpTmp.citydata = objEmployee.citydata;
             }
             return await Task.FromResult<IActionResult>(Ok());
         }

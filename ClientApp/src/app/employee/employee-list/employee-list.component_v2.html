@@ -1,83 +1,87 @@
 <div>
-    <button mat-flat-button color="primary" style="margin-right: 10px" (click)="openAddDialog()">Add New</button>
-    <button mat-flat-button color="primary" (click)="refreshData()">Search</button>
+  <button mat-flat-button color="primary" style="margin-right: 10px" (click)="openAddDialog()">Add New</button>
+  <button mat-flat-button color="primary" (click)="refreshData()">Search</button>
 </div>
 
 <hr>
 <div *ngIf="!dataAvailable">
-    <h4> No Employee Data is present Click Add new to add Data.</h4>
+  <h4> No Employee Data is present Click Add new to add Data.</h4>
 </div>
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+<div>
+  <table mat-table [dataSource]="dataSource" matSort>
 
     <!-- Cột STT -->
     <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> STT </th>
-        <td mat-cell *matCellDef="let element"><span> {{element.position}}</span> </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> STT </th>
+      <td mat-cell *matCellDef="let element"><span> {{element.position}}</span> </td>
     </ng-container>
 
     <!-- Cột FirstName -->
     <ng-container matColumnDef="fname">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
-        <td mat-cell *matCellDef="let element"><span> {{element.firstname}}</span> </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+      <td mat-cell *matCellDef="let element"><span> {{element.firstname}}</span> </td>
     </ng-container>
 
     <!-- Cột LastName -->
     <ng-container matColumnDef="lname">
-        <th mat-header-cell *matHeaderCellDef> Last Name </th>
-        <td mat-cell *matCellDef="let element"><span> {{element.lastname}}</span> </td>
+      <th mat-header-cell *matHeaderCellDef> Last Name </th>
+      <td mat-cell *matCellDef="let element"><span> {{element.lastname}}</span> </td>
     </ng-container>
 
     <!-- Cột Email -->
     <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef> Email </th>
-        <td mat-cell *matCellDef="let element"><span> {{element.email}}</span> </td>
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"><span> {{element.email}}</span> </td>
     </ng-container>
 
     <!-- Cột Giới tính -->
     <ng-container matColumnDef="gender">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
-        <td mat-cell *matCellDef="let element"><span> {{element.gender=='1'?'Nam':'Nữ'}}</span> </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
+      <td mat-cell *matCellDef="let element"><span> {{element.gender=='1'?'Nam':'Nữ'}}</span> </td>
     </ng-container>
 
     <!-- Cột Ngày sinh -->
     <ng-container matColumnDef="birthday">
-        <th mat-header-cell *matHeaderCellDef> Birthday </th>
-        <td mat-cell *matCellDef="let element"><span> {{element.birthday| date: 'dd/MM/yyyy'}}</span> </td>
+      <th mat-header-cell *matHeaderCellDef> Birthday </th>
+      <td mat-cell *matCellDef="let element"><span> {{element.birthday| date: 'dd/MM/yyyy'}}</span> </td>
     </ng-container>
 
     <!-- Cột Độc thân -->
     <ng-container matColumnDef="issingle">
-        <th mat-header-cell *matHeaderCellDef> Is Single </th>
-        <td mat-cell *matCellDef="let element"><span> {{element.issingle=="1"?'Độc thân':'Đã cưới'}}</span> </td>
+      <th mat-header-cell *matHeaderCellDef> Is Single </th>
+      <td mat-cell *matCellDef="let element"><span> {{element.issingle=="1"?'Độc thân':'Đã cưới'}}</span> </td>
     </ng-container>
 
     <!-- Cột Tốt nghiệp -->
     <ng-container matColumnDef="graduation">
-        <th mat-header-cell *matHeaderCellDef> Graduation </th>
-        <td mat-cell *matCellDef="let element"><span> {{element.graduation=='1'?'Xuất sắc':'Giỏi'}}</span> </td>
+      <th mat-header-cell *matHeaderCellDef> Graduation </th>
+      <td mat-cell *matCellDef="let element"><span> {{element.graduation=='1'?'Xuất sắc':'Giỏi'}}</span> </td>
     </ng-container>
 
     <!-- Cột ẩn ID -->
     <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> ID </th>
-        <td mat-cell *matCellDef="let element"><span> {{element.id}}</span> </td>
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"><span> {{element.id}}</span> </td>
     </ng-container>
 
     <ng-container matColumnDef="detail">
-        <th mat-header-cell *matHeaderCellDef> Detail </th>
-        <td mat-cell *matCellDef="let e">
-            <button mat-icon-button aria-label="Edit" (click)="openAddDialog(e.id)"> <mat-icon>edit</mat-icon> </button>
-        </td>
+      <th mat-header-cell *matHeaderCellDef> Detail </th>
+      <td mat-cell *matCellDef="let e">
+        <button mat-icon-button aria-label="Edit" (click)="openAddDialog(e.id)"> <mat-icon>edit</mat-icon> </button>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="delete">
-        <th mat-header-cell *matHeaderCellDef> Delete </th>
-        <td mat-cell *matCellDef="let e">
-            <button mat-icon-button aria-label="Delete" (click)="deleteConfirmation(e.id)"> <mat-icon>delete</mat-icon> </button>
-        </td>
+      <th mat-header-cell *matHeaderCellDef> Delete </th>
+      <td mat-cell *matCellDef="let e">
+        <button mat-icon-button aria-label="Delete" (click)="deleteConfirmation(e.id)"> <mat-icon>delete</mat-icon> </button>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true "></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)"></tr>
 
-</table>
+  </table>
+</div>
+

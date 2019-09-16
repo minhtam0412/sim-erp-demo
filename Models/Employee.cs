@@ -16,5 +16,7 @@ namespace SIM.ERP.Models
         public bool Issingle { get; set; }
         public string Graduation { get; set; }
         public int TotalRow { get; set; }
+        public string Job { get; set; }
+        public string citydata { get; set; }
     }
 }

@@ -5,11 +5,12 @@ import { Employee } from 'src/app/models/empployee';
 import { MatDialogRef, MAT_DIALOG_DATA, MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
 import { Function } from 'src/app/models/function';
+import { style } from '@angular/animations';
 
 @Component({
   selector: 'app-employee-info',
   templateUrl: './employee-info.component.html',
-  styleUrls: ['./employee-info.component.css']
+  styleUrls: ['./employee-info.component.css',],
 })
 export class EmployeeInfoComponent implements OnInit, AfterViewInit {
   myGroup: any;
@@ -19,6 +20,26 @@ export class EmployeeInfoComponent implements OnInit, AfterViewInit {
   cols = ['functionId', 'functionName', 'functionNote'];
   datasource = new MatTableDataSource<Function>();
   functionData: Function[] = [];
+
+  public arrayOfCities: any[] =
+    [{ city: 'New York', state: 'New York', nickname: 'The Big Apple', population: '8,537,673' },
+    { city: 'Los Angeles', state: 'California', nickname: 'City of Angels', population: '3,976,322' },
+    { city: 'Chicago', state: 'Illinois', nickname: 'The Windy City', population: '2,704,958' },
+    { city: 'Houston', state: 'Texas', nickname: 'Space City', population: '2,303,482' },
+    { city: 'Phoenix', state: 'Arizona', nickname: 'Valley of the Sun', population: '1,615,017' },
+    { city: 'Philadelphia', state: 'Pennsylvania', nickname: 'City of Brotherly Love', population: '1,567,872' },
+    { city: 'San Antonio', state: 'Texas', nickname: 'Alamo City', population: '1,492,510' },
+    { city: 'San Diego', state: 'California', nickname: 'America\'s Finest City', population: '1,406,630' },
+    { city: 'Dallas', state: 'Texas', nickname: 'The Big D', population: '1,317,929' },
+    { city: 'San Jose', state: 'California', nickname: 'Capital of Silicon Valley', population: '1,025,350' }];
+
+  public cityHeaderTemplate = `
+    <div class="row custom-row">
+      <div class="col">City</div>
+      <div class="col">State</div>
+      <div class="col">NickName</div>
+      <div class="col">Population</div>
+    </div>`;
 
   ngAfterViewInit(): void {
     if (this.data != undefined) {
@@ -47,6 +68,7 @@ export class EmployeeInfoComponent implements OnInit, AfterViewInit {
       issingle: new FormControl(),
       graduation: new FormControl(),
       job: new FormControl(),
+      citydata: new FormControl(),
       functionArray: this.fb.array([]),
     });
 
@@ -122,5 +144,23 @@ export class EmployeeInfoComponent implements OnInit, AfterViewInit {
   updateJobData($event) {
     if ($event == null || $event == undefined) { return; }
     this.myGroup.controls.job.setValue($event);
+  }
+
+  public renderCity(data: any): string {
+    const html = `
+      <div class="row data-row">
+        <div class="col">${data.city}</div>
+        <div class="col">${data.state}</div>
+        <div class="col">${data.nickname}</div>
+        <div class="col">${data.population}</div>
+      </div>`;
+
+    return html;
+  }
+
+  myCallback(event) {
+    console.log(event);
+    // this.myGroup.controls['citydata'].setValue(event.city);
+    // console.log('city data: ' + this.myGroup.controls['citydata'].value);
   }
 }

@@ -8,9 +8,13 @@ import { MultiComboboxComponent } from '../multi-combobox/multi-combobox.compone
 })
 export class FormcheckcomponentComponent implements OnInit {
 
+  minDate = new Date(2000, 0, 1);
+  maxDate = new Date(2020, 0, 1);
+
+  favoriteSeason: string;
+  seasons: string[] = ['Nam', 'Nữ'];
 
   @ViewChild('combo1', {static: false}) cbo1:MultiComboboxComponent;
-  @ViewChild('combo2', {static: false}) cbo2:MultiComboboxComponent;
   constructor() {
   }
 
@@ -20,7 +24,6 @@ export class FormcheckcomponentComponent implements OnInit {
   showdata()
   {
     console.log(this.cbo1.selectedItems);
-    console.log(this.cbo2.selectedItems);
   }
 
 }
