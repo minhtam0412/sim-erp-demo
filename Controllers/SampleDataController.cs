@@ -44,6 +44,26 @@ namespace SIM.ERP.Controllers
             return lstEmployees;
         }
 
+        [HttpPost("GetListPaging")]
+        public IEnumerable<Employee> GetListEmployee([FromBody]PagingParam objPagingParam)
+        {
+            int NumRow = 200;
+            List<Employee> lst = new List<Employee>(Enumerable.Range(1, NumRow).Select(index => new Employee
+            {
+                ID = rng.Next(1, 1000).ToString(),
+                firstname = "Tam",
+                lastname = "Ngo Minh",
+                Email = "minhtam0412@gmail.com",
+                Gender = rng.Next(1, 1000) % 2 + 1
+            }));
+
+            foreach (var employee in lst)
+            {
+                employee.TotalRow = lst.Count;
+            }
+            return lst;
+        }
+
         [HttpPost("[action]")]
         public IActionResult AddEmployee([FromBody]Employee employee)
         {
@@ -97,7 +117,7 @@ namespace SIM.ERP.Controllers
                 objEmpTmp.Issingle = objEmployee.Issingle;
                 objEmpTmp.Birthday = objEmployee.Birthday;
                 objEmpTmp.Graduation = objEmployee.Graduation;
-                objEmpTmp.Job= objEmployee.Job;
+                objEmpTmp.Job = objEmployee.Job;
                 objEmpTmp.citydata = objEmployee.citydata;
             }
             return await Task.FromResult<IActionResult>(Ok());
@@ -111,7 +131,7 @@ namespace SIM.ERP.Controllers
             string strPageNumber = Globals.GetHeaderValue(Request, "pageNumber");
             string strPageSize = Globals.GetHeaderValue(Request, "pageSize");
 
-           lstEmployees.ForEach(x=>x.TotalRow = lstEmployees.Count);
+            lstEmployees.ForEach(x => x.TotalRow = lstEmployees.Count);
             var rsl = lstEmployees.Skip(Convert.ToInt32(strPageSize) * Convert.ToInt32(strPageNumber))
                 .Take(Convert.ToInt32(strPageSize));
 

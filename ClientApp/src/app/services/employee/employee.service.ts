@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ROOT_URL } from 'src/app/models/config';
 import { Employee } from 'src/app/models/empployee';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { PagingParam } from 'src/app/models/paging';
 
 
 @Injectable({
@@ -13,6 +14,12 @@ export class EmployeeService {
 
   getEmployee() {
     return this.http.get<Employee[]>(ROOT_URL + 'SampleData/GetListEmployee');
+  }
+
+  getEmployeePaging(pagingParam: PagingParam) {
+    console.log(pagingParam);
+    const headers = new HttpHeaders().set('content-type', 'application/json');
+    return this.http.post<Employee[]>(ROOT_URL + 'SampleData/GetListPaging/', JSON.stringify(pagingParam), { headers });
   }
 
   addEmployee(emp: Employee) {

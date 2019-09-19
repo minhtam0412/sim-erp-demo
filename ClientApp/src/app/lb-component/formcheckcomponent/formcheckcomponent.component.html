@@ -1,114 +1,406 @@
 <section class="form_content">
-    <form class="needs-validation was-validated" novalidate="">
-        <div class="row">
-            <div class="col-sm-4 text-left">
-                <p class="text-uppercase" style="font-size:18px;color: #587792;"><span>Bệnh nhân</span></p>
-            </div>
-            <div class="col-sm-8 text-right">
-                <div class="form-group">
-                    <button type="button" class="btn btn-outline-success">Lưu (F3)</button>&nbsp;
-                    <button type="button" class="btn btn-outline-success">Lưu & Thêm mới</button>&nbsp;
-                    <button type="button" class="btn btn-outline-primary">Thêm mới</button>&nbsp;
-                    <button type="button" class="btn btn-outline-primary">Trở về</button>&nbsp;
-                </div>
-            </div>
+  <form class="needs-validation was-validated" novalidate="">
+    <div class="row">
+      <div class="col-sm-4 text-left">
+        <p class="text-uppercase" style="font-size:18px;color: black; font-weight:bold"><span>Phiếu bán thuốc</span></p>
+      </div>
+      <div class="col-sm-8 text-right">
+        <div class="form-group">
+          <button type="button" class="btn btn-outline-success">Lưu (F3)</button>&nbsp;
+          <button type="button" class="btn btn-outline-success">Lưu & Thêm mới</button>&nbsp;
+          <button type="button" class="btn btn-outline-primary">Thêm mới</button>&nbsp;
+          <button type="button" class="btn btn-outline-primary">Trở về</button>&nbsp;
         </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <div style="border-top:1px solid #dcdcdc; margin-bottom:10px">
-                </div>
-            </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div style="border-top:1px solid #dcdcdc; margin-bottom:10px">
         </div>
-        <div class="row">
-            <div class="col-sm-7">
-
-                <div class="row">
-                    <label class="col-md-2 control-label">Mã bệnh nhân</label>
-                    <div class="col-md-4">
-                        <mat-form-field class="example-full-width">
-                            <input matInput placeholder="" value="">
-                        </mat-form-field>
-                    </div>
-                    <label class="col-md-2 control-label">Barcode<span class="control-label-require"></span></label>
-                    <div class="col-md-4">
-                        <mat-form-field class="example-full-width">
-                            <input matInput placeholder="" value="">
-                        </mat-form-field>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <label class="col-md-2 control-label">Họ và tên</label>
-                    <div class="col-md-10">
-                        <mat-form-field class="example-full-width">
-                            <input matInput placeholder="HỌ VÀ TÊN" value="">
-                        </mat-form-field>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <label class="col-md-2 control-label">Ngày sinh</label>
-                    <div class="col-md-4">
-                        <mat-form-field class="example-full-width">
-                            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Choose a date">
-                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-datepicker #picker></mat-datepicker>
-                        </mat-form-field>
-                    </div>
-                    <label class="col-md-2 control-label">Giới tính</label>
-                    <div class="col-md-4">
-                        <mat-radio-group name="gioitinh" aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="favoriteSeason">
-                            <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
-                                {{season}}
-                            </mat-radio-button>
-
-                        </mat-radio-group>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <label class="col-md-2 control-label">Điện thoại</label>
-                    <div class="col-md-4">
-                        <mat-form-field class="example-full-width">
-                            <input matInput placeholder="" value="">
-                        </mat-form-field>
-                    </div>
-                    <label class="col-md-2 control-label">Email<span class="control-label-require"></span></label>
-                    <div class="col-md-4">
-                        <mat-form-field class="example-full-width">
-                            <input matInput placeholder="" value="">
-                        </mat-form-field>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <label class="col-md-2 control-label">Địa chỉ</label>
-                    <div class="col-md-10">
-                        <mat-form-field class="example-full-width">
-                            <textarea matInput placeholder="Địa chỉ"></textarea>
-                        </mat-form-field>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <label class="col-md-2 control-label">Upload file</label>
-                    <div class="col-md-10">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                        </div>
-                    </div>
-                </div>
-
+      </div>
+    </div>
+    <div class="form_subcontent">
+      <div class="row">
+        <div class="col-sm-7">
+          <div class="row">
+            <label class="col-sm-2 control-label">Mã bệnh nhân</label>
+            <div class="col-sm-4">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="" value="">
+              </mat-form-field>
             </div>
-
-            <div class="col-sm-5">
-
+            <label class="col-sm-2 control-label">Barcode<span class="control-label-require"></span></label>
+            <div class="col-sm-4">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="" value="">
+              </mat-form-field>
             </div>
+          </div>
+
+          <div class="row">
+            <label class="col-sm-2 control-label">Họ và tên</label>
+            <div class="col-sm-10">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="HỌ VÀ TÊN" value="">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <label class="col-sm-2 control-label">Ngày sinh</label>
+            <div class="col-sm-4">
+              <mat-form-field class="example-full-width">
+                <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Choose a date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <label class="col-sm-2 control-label">Giới tính</label>
+            <div class="col-sm-4">
+              <mat-radio-group name="gioitinh" aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="favoriteSeason">
+                <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+                  {{season}}
+                </mat-radio-button>
+
+              </mat-radio-group>
+            </div>
+          </div>
+
+          <div class="row">
+            <label class="col-sm-2 control-label">Điện thoại</label>
+            <div class="col-sm-4">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="" value="">
+              </mat-form-field>
+            </div>
+            <label class="col-sm-2 control-label">Email<span class="control-label-require"></span></label>
+            <div class="col-sm-4">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="" value="">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <label class="col-sm-2 control-label">Địa chỉ</label>
+            <div class="col-sm-10">
+              <mat-form-field class="example-full-width">
+                <textarea matInput placeholder="Địa chỉ" rows="1"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <label class="col-sm-2 control-label">Upload file</label>
+            <div class="col-sm-10">
+              <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+              <button type="button" class="btn btn-success btn-s"
+                      (click)="uploader.uploadAll()"
+                      [disabled]="!uploader.getNotUploadedItems().length">
+                Upload an Image
+              </button>
+            </div>
+          </div>
+
         </div>
-        <div class="row">
+
+        <div class="col-sm-5">
+          <div class="row">
+            <label class="col-sm-4 control-label">TT gia đình</label>
+            <div class="col-sm-8">
+              <mat-form-field>
+                <mat-select>
+                  <mat-option *ngFor="let item of cboFamilyInfo" [value]="item.value">
+                    {{item.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <label class="col-sm-4 control-label">Nghề nghiệp</label>
+            <div class="col-sm-8">
+              <mat-form-field>
+                <mat-select>
+                  <mat-option *ngFor="let item of cboJob" [value]="item.value">
+                    {{item.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <label class="col-sm-4 control-label">Quốc gia</label>
+            <div class="col-sm-8">
+              <mat-form-field>
+                <mat-select>
+                  <mat-option *ngFor="let item of cboCountry" [value]="item.value">
+                    {{item.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <label class="col-sm-4 control-label">Dân tộc</label>
+            <div class="col-sm-8">
+              <mat-form-field>
+                <mat-select>
+                  <mat-option *ngFor="let item of cboRace" [value]="item.value">
+                    {{item.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <label class="col-sm-4 control-label">Tôn giáo</label>
+            <div class="col-sm-8">
+              <mat-form-field>
+                <mat-select>
+                  <mat-option *ngFor="let item of cboReligion" [value]="item.value">
+                    {{item.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <label class="col-sm-4 control-label">Tỉnh thành</label>
+            <div class="col-sm-8">
+              <mat-form-field>
+                <mat-select>
+                  <mat-option *ngFor="let item of cboProvice" [value]="item.value">
+                    {{item.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <label class="col-sm-4 control-label">Quận huyện</label>
+            <div class="col-sm-8">
+              <mat-form-field>
+                <mat-select>
+                  <mat-option *ngFor="let item of cboDistric" [value]="item.value">
+                    {{item.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <label class="col-sm-4 control-label">Phường xã</label>
+            <div class="col-sm-8">
+              <mat-form-field>
+                <mat-select>
+                  <mat-option *ngFor="let item of cboWards" [value]="item.value">
+                    {{item.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
         </div>
-    </form>
+      </div>
+    </div>
+    <div class="form_subfooter">
+      <div class="row">
+        <div class="col-sm-12">
+          <mat-tab-group dynamicHeight [color]="'accent'" [backgroundColor]="'primary'">
+            <mat-tab label="Thông tin người đại diện">
+              <div class="example-large-box mat-elevation-z4">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="row">
+                      <label class="col-sm-4 control-label">Quan hệ bệnh nhân</label>
+                      <div class="col-sm-8">
+                        <mat-form-field>
+                          <mat-select>
+                            <mat-option *ngFor="let item of cboRelationship" [value]="item.value">
+                              {{item.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-4 control-label">Người đại diện</label>
+                      <div class="col-sm-8">
+                        <mat-form-field class="example-full-width">
+                          <input matInput placeholder="" value="">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-4 control-label">Quan hệ người đại diện</label>
+                      <div class="col-sm-8">
+                        <mat-form-field class="example-full-width">
+                          <input matInput placeholder="" value="">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-4 control-label">Điện thoại khẩn</label>
+                      <div class="col-sm-8">
+                        <mat-form-field class="example-full-width">
+                          <input matInput placeholder="" value="">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="row">
+                      <label class="col-sm-4 control-label">Xem ERM</label>
+                      <div class="col-sm-8">
+                        <mat-form-field>
+                          <mat-select>
+                            <mat-option *ngFor="let item of cboRelationship" [value]="item.value">
+                              {{item.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-4 control-label">Nhận SMS</label>
+                      <div class="col-sm-8">
+                        <mat-form-field>
+                          <mat-select>
+                            <mat-option *ngFor="let item of cboRelationship" [value]="item.value">
+                              {{item.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-4 control-label">Nhận Email</label>
+                      <div class="col-sm-8">
+                        <mat-form-field>
+                          <mat-select>
+                            <mat-option *ngFor="let item of cboRelationship" [value]="item.value">
+                              {{item.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab label="Thông tin bảo hiểm">
+              <div class="example-large-box mat-elevation-z4">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="row">
+                      <label class="col-sm-4 control-label">Bảo hiểm chính</label>
+                      <div class="col-sm-8">
+                        <mat-form-field>
+                          <mat-select>
+                            <mat-option *ngFor="let item of cboRelationship" [value]="item.value">
+                              {{item.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-4 control-label">Ngày hết hạn</label>
+                      <div class="col-sm-8">
+                        <mat-form-field>
+                          <input matInput [matDatepicker]="pickerBHC" placeholder="Choose a date">
+                          <mat-datepicker-toggle matSuffix [for]="pickerBHC"></mat-datepicker-toggle>
+                          <mat-datepicker #pickerBHC></mat-datepicker>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="row">
+                      <label class="col-sm-4 control-label">Ngày tham gia BH</label>
+                      <div class="col-sm-8">
+                        <mat-form-field>
+                          <input matInput [matDatepicker]="pickerTG_BHC" placeholder="Choose a date">
+                          <mat-datepicker-toggle matSuffix [for]="pickerTG_BHC"></mat-datepicker-toggle>
+                          <mat-datepicker #pickerTG_BHC></mat-datepicker>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="row">
+                      <label class="col-sm-4 control-label">Bảo hiểm phụ</label>
+                      <div class="col-sm-8">
+                        <mat-form-field>
+                          <mat-select>
+                            <mat-option *ngFor="let item of cboRelationship" [value]="item.value">
+                              {{item.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-4 control-label">Ngày hết hạn</label>
+                      <div class="col-sm-8">
+                        <mat-form-field>
+                          <input matInput [matDatepicker]="pickerBHP" placeholder="Choose a date">
+                          <mat-datepicker-toggle matSuffix [for]="pickerBHP"></mat-datepicker-toggle>
+                          <mat-datepicker #pickerBHP></mat-datepicker>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="row">
+                      <label class="col-sm-4 control-label">Ngày tham gia BH</label>
+                      <div class="col-sm-8">
+                        <mat-form-field>
+                          <input matInput [matDatepicker]="pickerTG_BHP" placeholder="Choose a date">
+                          <mat-datepicker-toggle matSuffix [for]="pickerTG_BHP"></mat-datepicker-toggle>
+                          <mat-datepicker #pickerTG_BHP></mat-datepicker>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab label="Khảo sát">
+              <div class="example-large-box mat-elevation-z4">
+                <div class="row">
+                  <div class="col-sm-2">
+                    <mat-checkbox class="example-margin" [(ngModel)]="ckbbanbe" name="ckbbanbe">Bạn bè</mat-checkbox>
+                  </div>
+                  <div class="col-sm-2">
+                    <mat-checkbox class="example-margin" [(ngModel)]="ckbnguoithan" name="ckbnguoithan">Người thân</mat-checkbox>
+                  </div>
+                  <div class="col-sm-2">
+                    <mat-checkbox class="example-margin" [(ngModel)]="ckbgiadinh" name="ckbgiadinh">Gia đình</mat-checkbox>
+                  </div>
+                  <div class="col-sm-2">
+                    <mat-checkbox class="example-margin" [(ngModel)]="ckbbaodai" name="ckbbaodai">Báo đài</mat-checkbox>
+                  </div>
+                  <div class="col-sm-2">
+                    <mat-checkbox class="example-margin" [(ngModel)]="ckbbacsi" name="ckbbacsi">Bác sĩ</mat-checkbox>
+                  </div>
+                  <div class="col-sm-2">
+                    <mat-checkbox class="example-margin" [(ngModel)]="ckbkhac" name="ckbkhac">Khác</mat-checkbox>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </form>
 </section>
 <!--<div class="row">
   <div class="col-md-12">

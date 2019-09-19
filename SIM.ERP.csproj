@@ -59,6 +59,8 @@
   <ItemGroup>
     <Folder Include="ClientApp\src\app\employee\employee-info\" />
     <Folder Include="ClientApp\src\app\lb-component\multi-combobox\" />
+    <Folder Include="ClientApp\src\app\pagination\" />
+    <Folder Include="ClientApp\src\app\pagingtest\" />
     <Folder Include="ClientApp\src\app\services\employee\" />
     <Folder Include="ClientApp\src\assets\css\" />
     <Folder Include="ClientApp\src\assets\js\" />

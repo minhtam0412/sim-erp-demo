@@ -9,10 +9,15 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FileSelectDirective } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
-    FormcheckcomponentComponent
+    FormcheckcomponentComponent,
+    FileSelectDirective
   ],
   imports: [
     CommonModule,
@@ -23,6 +28,10 @@ import { FormsModule } from '@angular/forms';
     MatRadioModule,
     MatFormFieldModule,
     FormsModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatCheckboxModule,
+
   ],
   exports: [
     FormcheckcomponentComponent

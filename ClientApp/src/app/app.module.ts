@@ -24,6 +24,8 @@ import { EmployeeListPagingComponent } from './employee/employee-list/employee-l
 import { AngularMaterialModule } from './materialmodule/angularmaterial/angularmaterial.module';
 import { CustomPaginator } from './employee/employee-list/CustomPaginatorConfiguration';
 import { InlineEditComponent } from './employee/inline-edit/inline-edit.component';
+import { PaginationComponent } from './pagination/pagination.component';
+import { PagingtestComponent } from './pagingtest/pagingtest.component';
 
 
 const routes: Routes = [
@@ -60,7 +62,9 @@ const routes: Routes = [
     EmployeeListComponent,
     EmployeeInfoComponent,
     EmployeeListPagingComponent,
-    InlineEditComponent
+    InlineEditComponent,
+    PaginationComponent,
+    PagingtestComponent
   ],
   imports: [
     BrowserModule,

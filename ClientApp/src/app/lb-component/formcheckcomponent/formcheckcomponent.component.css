@@ -1,22 +1,17 @@
-.form_content{
-  width:100%;
-}
-
-.example-full-width {
+.form_content {
   width: 100%;
+  padding: 10px;
+  font-size: 12px;
 }
 
-.row label, input {
-  margin-top:auto;
-  margin-bottom:auto;
+.row label {
+  margin-top: auto;
+  margin-bottom: auto;
+  color: #555;
+  font-weight: bold;
 }
 
-.example-radio-button {
-  margin: 5px;
-}
-
-.example-radio-group {
-  display: flex;
-  flex-direction: row;
-  margin: 15px 0;
+.row input {
+  margin-top: auto;
+  margin-bottom: auto;
 }
