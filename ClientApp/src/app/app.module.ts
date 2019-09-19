@@ -26,6 +26,8 @@ import { CustomPaginator } from './employee/employee-list/CustomPaginatorConfigu
 import { InlineEditComponent } from './employee/inline-edit/inline-edit.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { PagingtestComponent } from './pagingtest/pagingtest.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 const routes: Routes = [
@@ -64,11 +66,12 @@ const routes: Routes = [
     EmployeeListPagingComponent,
     InlineEditComponent,
     PaginationComponent,
-    PagingtestComponent
+    PagingtestComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgbModule,
     LbComponentModule,
     BrowserAnimationsModule,
     AngularMaterialModule,

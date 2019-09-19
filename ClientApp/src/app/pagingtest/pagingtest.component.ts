@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Employee } from '../models/empployee';
 import { EmployeeService } from '../services/employee/employee.service';
 import { PagingParam } from '../models/paging';
+import { PaginationComponent } from '../pagination/pagination.component';
 
 @Component({
   selector: 'app-pagingtest',
@@ -16,6 +17,7 @@ export class PagingtestComponent implements OnInit {
   total = 0;
   page = 1;
   limit = 20;
+  @ViewChild(PaginationComponent, { static: true }) paging: PaginationComponent;
   constructor(private employeeService: EmployeeService) { }
 
   ngOnInit() {

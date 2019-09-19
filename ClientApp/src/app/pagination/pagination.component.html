@@ -1,13 +1,37 @@
 <div class="pagination" *ngIf="count > 0">
-    <div class="description">
-        <span class="page-counts">{{ getMin() }} - {{ getMax() }} of {{ count }}</span>
-        <span class="page-totals">||| {{ totalPages() }} pages</span>
+  <div class="row">
+    <div class="col-md-4 description">
+      <div class="row">
+        <div class="form-inline">
+          <label>Số dòng &nbsp;&nbsp;</label>
+          <select name="cars" class="form-control form-control-sm" style="width:65px">
+            <option value="5">10</option>
+            <option value="10">15</option>
+            <option value="15">20</option>
+            <option value="15">50</option>
+            <option value="15">100</option>
+            <option value="15">200</option>
+            <option value="15">300</option>
+            <option value="15">500</option>
+          </select>
+          <!--{{ getMin() }} - {{ getMax() }} of {{ count }}-->
+        </div>
+      </div>
     </div>
-    <div class="numbers">
-        <button class="link" (click)="onPrev()" [disabled]="page === 1 || loading" [ngClass]="{ 'disabled': page === 1 || loading }"><< Previous</button>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-8 text-right">
+          <div class="form-inline">
+            <span class="page-totals"><label>Tổng số dòng: {{ totalPages() }} </label> </span>
+            <button class="btn btn-sm" (click)="onPrev()" [disabled]="page === 1 || loading" [ngClass]="{ 'disabled': page === 1 || loading }">&laquo;</button>
 
-        <button *ngFor="let pageNum of getPages()" (click)="onPage(pageNum)" [ngClass]="{'active': pageNum === page, 'disabled': loading}">{{ pageNum }}</button>
+            <button class="btn btn-sm btnnumber" *ngFor="let pageNum of getPages()" (click)="onPage(pageNum)" [ngClass]="{'active': pageNum === page, 'disabled': loading}">{{ pageNum }}</button>
 
-        <button class="link" (click)="onNext(true)" [disabled]="lastPage() || loading" [ngClass]="{ 'disabled': lastPage() || loading }">Next >></button>
+            <button class="btn btn-sm" (click)="onNext(true)" [disabled]="lastPage() || loading" [ngClass]="{ 'disabled': lastPage() || loading }">&raquo;</button>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
